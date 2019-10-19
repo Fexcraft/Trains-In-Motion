@@ -9,7 +9,6 @@ import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 public class EventManagerServer {
 
     @SubscribeEvent
-    @SuppressWarnings("unused")
     public void playerQuitEvent(PlayerEvent.PlayerLoggedOutEvent event){
         if (event.player.ridingEntity instanceof GenericRailTransport || event.player.ridingEntity instanceof EntitySeat){
             event.player.dismountEntity(event.player.ridingEntity);
@@ -18,7 +17,6 @@ public class EventManagerServer {
 
 
     @SubscribeEvent
-    @SuppressWarnings("unused")
     public void entityStruckByLightningEvent(EntityStruckByLightningEvent event) {
         if (event.entity instanceof GenericRailTransport){
             event.setCanceled(true);

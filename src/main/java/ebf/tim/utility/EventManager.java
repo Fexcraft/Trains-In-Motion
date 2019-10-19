@@ -1,5 +1,17 @@
 package ebf.tim.utility;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent;
@@ -25,17 +37,6 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ReportedException;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.GL11;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 /**
  * <h1>event management</h1>
@@ -168,7 +169,7 @@ public class EventManager {
 
     private static List<GenericRailTransport> getTrainsInRange(Entity entity){
         ArrayList<GenericRailTransport> list =new ArrayList<>();
-        List e = entity.worldObj.getLoadedEntityList();
+        List<?> e = entity.worldObj.getLoadedEntityList();
             for (Object obj : e) {
                 if (obj instanceof GenericRailTransport) {
                     list.add((GenericRailTransport) obj);
@@ -217,7 +218,6 @@ public class EventManager {
 
 
     @SubscribeEvent
-    @SuppressWarnings("unused")
     public void onRenderTick(TickEvent.RenderTickEvent event) {
         if(event.phase == TickEvent.Phase.END && event.side.isClient() && Minecraft.getMinecraft().currentScreen==null && selected!=null){
             left=new ScaledResolution(Minecraft.getMinecraft(),Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayHeight).getScaledWidth()/2;
@@ -300,7 +300,6 @@ public class EventManager {
      * This event is called when a player joins the world, we use this to display the alpha notice, and check for new mod versions, this is only displayed on the client side, but can be used for server..
      */
     @SubscribeEvent
-    @SuppressWarnings("unused")
     public void entityJoinWorldEvent(EntityJoinWorldEvent event) {
         if (event.world.isRemote && event.entity instanceof EntityPlayer) {
 

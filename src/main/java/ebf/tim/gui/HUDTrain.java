@@ -1,5 +1,7 @@
 package ebf.tim.gui;
 
+import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import ebf.tim.entities.EntityTrainCore;
@@ -8,7 +10,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import org.lwjgl.opengl.GL11;
 
 /**
  * <h1>Train HUD</h1>
@@ -33,7 +34,6 @@ public class HUDTrain extends GuiScreen {
      * Some IDE's may report this function is unused, but it is actually used indirectly by minecraft's event manager, for this reason the warning was supressed.
      */
     @SubscribeEvent(priority = EventPriority.NORMAL)
-    @SuppressWarnings("unused")
     public void onRenderExperienceBar(RenderGameOverlayEvent event) {
         if (Minecraft.getMinecraft() != null && Minecraft.getMinecraft().thePlayer != null) {
             if (Minecraft.getMinecraft().thePlayer.ridingEntity instanceof EntityTrainCore) {

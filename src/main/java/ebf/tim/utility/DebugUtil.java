@@ -81,7 +81,7 @@ public class DebugUtil {
 	//CODE BELLOW COPY/EDITED FROM FCL
 	
 	/**
-	 * Alternative to {@link #halt()} or {@link #stop()} which will only work in a developement workspace, nice for debugging.
+	 * Alternative to {@link #halt()} or {@link #stop()} which will only work in a development workspace, nice for debugging.
 	 * <br>
 	 * Which also prints the caller classes into console.
 	 * <br>
@@ -102,8 +102,7 @@ public class DebugUtil {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @return this instance's side.
 	 */
 	public static Side side(){
 		return FMLCommonHandler.instance().getSide();

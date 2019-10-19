@@ -1,6 +1,10 @@
 package ebf.tim.utility;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.common.collect.ListMultimap;
+
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import ebf.tim.entities.GenericRailTransport;
 import net.minecraft.world.ChunkCoordIntPair;
@@ -8,9 +12,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.ForgeChunkManager.Ticket;
 import net.minecraftforge.event.entity.EntityEvent;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * <h1>Chunk management</h1>
@@ -29,7 +30,6 @@ public class ChunkHandler implements ForgeChunkManager.LoadingCallback, ForgeChu
      * called when an entity enters a chunk.
      * we use this to figure out if the entity is one of ours, and then force the chunkloading.
      */
-    @SuppressWarnings("unused")
     @SubscribeEvent
     public void entityEnteredChunk(EntityEvent.EnteringChunk event) {
         if(event.entity instanceof GenericRailTransport && !event.entity.worldObj.isRemote) {
